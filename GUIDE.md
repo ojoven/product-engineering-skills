@@ -15,7 +15,7 @@ None of the skills has been run on a real product yet. Treat the rhythm describe
 
 In Claude Code there are two ways:
 
-- **Type its name**: `/what-next`. This always works.
+- **Type its name**: `/what-next`. This always works. Installed as a plugin, the name carries the plugin's prefix: `/product-engineering:what-next`.
 - **Ask in plain words**: "what should I build next?". The agent matches the request to the skill's description. If it answers without loading the skill, type the name.
 
 Text after the name narrows the run:

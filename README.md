@@ -1,10 +1,81 @@
-# Product engineer skills
+# Product engineering skills
+
+[![skills.sh](https://skills.sh/b/ojoven/product-engineering-skills)](https://skills.sh/ojoven/product-engineering-skills)
 
 Agent skills for the product side of product engineering: understanding the product, reading its evidence, deciding what to build next, and checking whether it worked.
 
-They are written for a small team or a solo builder working with a coding agent inside the product's repo. They follow the Agent Skills format (`<name>/SKILL.md`), so they work in Claude Code and in other harnesses that read it.
+They are written for a small team or a solo builder working with a coding agent inside the product's repo. They follow the Agent Skills format (`skills/<name>/SKILL.md`), so they work in Claude Code and in other harnesses that read it.
 
 For when to reach for each one, how to call it and what to have ready, read the [guide](GUIDE.md).
+
+## Install
+
+A plugin tracks this repo and is updated from it. [skills.sh](https://skills.sh/ojoven/product-engineering-skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
+
+### Claude Code
+
+In a session (Claude Code 2.1.275 or later):
+
+```
+/plugin install product-engineering --marketplace ojoven/product-engineering-skills
+```
+
+Or from the shell:
+
+```bash
+claude plugin marketplace add ojoven/product-engineering-skills
+claude plugin install product-engineering@ojoven
+```
+
+The skills then carry the plugin's name in front: `/product-engineering:what-next`.
+
+A marketplace that is not Anthropic's own does not update itself by default. Turn that on once (`/plugin`, the Marketplaces tab, `ojoven`, Enable auto-update), or update by hand:
+
+```bash
+claude plugin marketplace update ojoven
+claude plugin update product-engineering@ojoven
+```
+
+### Codex
+
+```bash
+codex plugin marketplace add ojoven/product-engineering-skills
+codex plugin add product-engineering@ojoven
+```
+
+Refresh with `codex plugin marketplace upgrade`.
+
+### Any other agent, or editable files
+
+```bash
+npx skills@latest add ojoven/product-engineering-skills
+```
+
+The installer asks which agent and which skills. Take all ten: they load each other, and every one of them loads `product-context`.
+
+| Flag | Does |
+| --- | --- |
+| `-a <agent>` | Picks the agent: `claude-code`, `cursor`, `codex`, `opencode`, `windsurf` and others |
+| `-g` | Installs for every project on the machine. The default is the current project |
+| `-y` | Skips the questions |
+| `--list` | Shows the skills without installing |
+
+To update, run `npx skills@latest update`. Re-run `add` to pick up skills added since.
+
+### From a clone
+
+For working on the skills themselves. Each one is a symlink into the clone, so a `git pull` updates them.
+
+```bash
+git clone https://github.com/ojoven/product-engineering-skills.git
+cd product-engineering-skills
+mkdir -p ~/.claude/skills
+ln -s "$PWD"/skills/*/ ~/.claude/skills/
+```
+
+### After installing
+
+In a product's repo, start with `/product-grill`. The [guide](GUIDE.md) walks through the first run.
 
 ## The loop
 
@@ -37,7 +108,7 @@ The first run on a product goes left to right. After that the loop is `what-next
 | `bet-review` | Reads a shipped bet against the criteria written before the build: keep, iterate or kill | the bet file, `PRODUCT.md` |
 | `product-context` | Shared reference the others load: workspace layout, evidence grades, number rules, interview rounds, data guardrails | nothing |
 
-Everything is written under `docs/product/` in the product's repo. The layout is defined once, in [product-context](product-context/SKILL.md).
+Everything is written under `docs/product/` in the product's repo. The layout is defined once, in [product-context](skills/product-context/SKILL.md).
 
 ## What they have in common
 
@@ -46,21 +117,6 @@ Everything is written under `docs/product/` in the product's repo. The layout is
 - **Numbers come with their denominator.** Under 100 users the skills report counts and read individual journeys, because most advice about product analytics assumes traffic that a small product does not have.
 - **One bet at a time, with the exit written first.** Kill criteria are fixed before the build so the result cannot be argued with afterwards.
 - **Read-only on real data.** Sources are queried, never written to. Credentials stay in environment variables, and user data enters the repo aggregated or anonymised.
-
-## Install
-
-For every project on this machine:
-
-```sh
-mkdir -p ~/.claude/skills
-ln -s "$PWD"/skills/*/ ~/.claude/skills/
-```
-
-For one product only, link them into that repo's `.claude/skills/` instead.
-
-Once this folder is in a GitHub repo, `npx skills add <owner>/<repo>` installs them the same way as any other skill set.
-
-Then, in a product's repo, start with `/product-grill`. The [guide](GUIDE.md) walks through the first run.
 
 ## Where they sit on the atlas
 

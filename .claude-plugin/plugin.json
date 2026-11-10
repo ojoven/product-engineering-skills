@@ -1,0 +1,20 @@
+{
+  "name": "product-engineering",
+  "description": "Agent skills for the product side of product engineering: grill the product, connect its evidence sources, audit analytics and the first run, decide what to build next, and review whether it worked.",
+  "author": {
+    "name": "Mikel Torres Ugarte",
+    "url": "https://github.com/ojoven"
+  },
+  "homepage": "https://github.com/ojoven/product-engineering-skills",
+  "repository": "https://github.com/ojoven/product-engineering-skills",
+  "keywords": [
+    "product-engineering",
+    "product",
+    "skills",
+    "analytics",
+    "prioritization",
+    "onboarding",
+    "feedback",
+    "experiments"
+  ]
+}

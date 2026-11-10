@@ -1,0 +1,23 @@
+{
+  "name": "ojoven",
+  "owner": {
+    "name": "Mikel Torres Ugarte",
+    "url": "https://github.com/ojoven"
+  },
+  "description": "Product engineering skills for coding agents, as an installable plugin.",
+  "plugins": [
+    {
+      "name": "product-engineering",
+      "source": "./",
+      "description": "Agent skills for the product side of product engineering: product grill, evidence sources, analytics and first-run audits, what to build next, bet shaping and review.",
+      "category": "productivity",
+      "keywords": [
+        "product-engineering",
+        "product",
+        "analytics",
+        "prioritization",
+        "onboarding"
+      ]
+    }
+  ]
+}
